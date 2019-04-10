@@ -1,0 +1,83 @@
+
+{% extends 'sarcasm/sarcasm.html' %}
+
+{% block script %}
+<style>
+	.button{
+		background-color:rgba(199,139,140,1.00);
+		padding:16px;
+		width:20%;
+		box-sizing:border-box;
+		margin-top:20px;
+	}
+
+	.button:hover{
+		background-color:black;
+		color:white;
+		}
+</style>
+{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2><span>Sarcasm Detection</span></h2>
+          <div class="clr"></div>
+          <div class="img"><iframe width="190" height="315" src="/static/sarcasm/images/S3.gif" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="post_content">
+            <p>Enter Your Comments Here</p>
+            <br/>
+            <form role="form" method="post" action="/post/">
+              {% csrf_token %}
+            <input name="cmd" type="text" placeholder="Enter Your Comments" style="padding:30px;width:50%;box-sizing:border-box">
+            <br/>
+            <input type="submit" class="button" name="" >
+            <table>
+              {% for a in data %}
+              <tr>
+                <td>{{a.feed}}</td>
+                <!--<td><b>{{a.spam}}</b></td>-->
+              </tr>
+              {% endfor %}
+            </table>
+            </form>
+          </div>
+          <div class="clr"></div>
+        </div>
+      <div class="article">
+
+          <div class="clr"></div>
+
+          <div class="clr"></div>
+        </div>
+
+      </div>
+      <div class="sidebar">
+        <div class="searchform">
+
+            <span>
+            </span>
+
+        </div>
+        <div class="clr"></div>
+        <div class="gadget">
+          <h2 class="star"><span>Menu</span>Bar</h2>
+          <div class="clr"></div>
+          <ul class="sb_menu">
+           <li class="active"><a href="/"><span>Home Page</span></a></li>
+          <li><a href="/"><span>Logout</span></a></li>
+
+		  <li><a href="/post/"><span>Post</span></a></li>
+
+          </ul>
+        </div>
+        <div class="gadget">
+
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+{% endblock %}
